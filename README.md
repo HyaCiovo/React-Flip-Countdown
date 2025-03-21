@@ -9,6 +9,11 @@
 
 ---
 
+## 线上演示
+
+[React-Flip-Countdown](https://react-flip-countdown.vercel.app/)
+
+---
 
 ## 使用示例
 
@@ -83,7 +88,7 @@ export default App;
 ```tsx
 <FlipCountdown
   type="Second"
-  targetDate={new Date('2024-01-01T00:00:00')}
+  targetDate={new Date('2026-01-01T00:00:00')}
   onEnded={() => alert('新年快乐！')}
 />
 ```
@@ -101,7 +106,7 @@ export default App;
 ```tsx
 <FlipCountdown
   type="Day"
-  targetDate={new Date('2024-12-31T23:59:59')}
+  targetDate={new Date('2026-12-31T23:59:59')}
 />
 ```
 
