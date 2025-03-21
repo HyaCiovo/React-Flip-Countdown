@@ -1,0 +1,179 @@
+.flip-card {
+  display: inline-block;
+  position: relative;
+  border: solid 1px #000;
+  overflow: hidden;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: 'Helvetica Neue';
+  margin: 0 3px;
+}
+
+.flip-card .digital:before,
+.flip-card .digital:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.flip-card .digital:before {
+  top: 0;
+  bottom: 50%;
+  border-bottom: solid 1px #666;
+}
+
+.flip-card .digital:after {
+  top: 50%;
+  bottom: 0;
+  line-height: 0;
+}
+
+/*向下翻*/
+.flip-card.down .front:before {
+  z-index: 3;
+}
+
+.flip-card.down .back:after {
+  z-index: 2;
+  transform-origin: 50% 0%;
+  transform: perspective(160px) rotateX(180deg);
+}
+
+.flip-card.down .front:after,
+.flip-card.down .back:before {
+  z-index: 1;
+}
+
+.flip-card.down.go .front:before {
+  transform-origin: 50% 100%;
+  animation: frontFlipDown 0.6s ease-in-out both;
+  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+  backface-visibility: hidden;
+}
+
+.flip-card.down.go .back:after {
+  animation: backFlipDown 0.6s ease-in-out both;
+}
+
+/*向上翻*/
+.flip-card.up .front:after {
+  z-index: 3;
+}
+
+.flip-card.up .back:before {
+  z-index: 2;
+  transform-origin: 50% 100%;
+  transform: perspective(160px) rotateX(-180deg);
+}
+
+.flip-card.up .front:before,
+.flip-card.up .back:after {
+  z-index: 1;
+}
+
+.flip-card.up.go .front:after {
+  transform-origin: 50% 0;
+  animation: frontFlipUp 0.6s ease-in-out both;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+  backface-visibility: hidden;
+}
+
+.flip-card.up.go .back:before {
+  animation: backFlipUp 0.6s ease-in-out both;
+}
+
+@keyframes frontFlipDown {
+  0% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+
+  100% {
+    transform: perspective(160px) rotateX(-180deg);
+  }
+}
+
+@keyframes backFlipDown {
+  0% {
+    transform: perspective(160px) rotateX(180deg);
+  }
+
+  100% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+}
+
+@keyframes frontFlipUp {
+  0% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+
+  100% {
+    transform: perspective(160px) rotateX(180deg);
+  }
+}
+
+@keyframes backFlipUp {
+  0% {
+    transform: perspective(160px) rotateX(-180deg);
+  }
+
+  100% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+}
+
+.flip-card .number0:before,
+.flip-card .number0:after {
+  content: '0';
+}
+
+.flip-card .number1:before,
+.flip-card .number1:after {
+  content: '1';
+}
+
+.flip-card .number2:before,
+.flip-card .number2:after {
+  content: '2';
+}
+
+.flip-card .number3:before,
+.flip-card .number3:after {
+  content: '3';
+}
+
+.flip-card .number4:before,
+.flip-card .number4:after {
+  content: '4';
+}
+
+.flip-card .number5:before,
+.flip-card .number5:after {
+  content: '5';
+}
+
+.flip-card .number6:before,
+.flip-card .number6:after {
+  content: '6';
+}
+
+.flip-card .number7:before,
+.flip-card .number7:after {
+  content: '7';
+}
+
+.flip-card .number8:before,
+.flip-card .number8:after {
+  content: '8';
+}
+
+.flip-card .number9:before,
+.flip-card .number9:after {
+  content: '9';
+}
