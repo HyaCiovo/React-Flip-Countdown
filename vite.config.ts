@@ -39,7 +39,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ["react"],
-          antd: ["antd"],
         },
       },
     },
