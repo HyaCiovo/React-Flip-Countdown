@@ -36,8 +36,8 @@ const formatRemaining = (ms: number) => {
  * @param {Date} props.targetDate - 目标时刻
  * @param {Function} props.onEnded - 倒计时结束时的回调函数
  */
-const FilpCountdown = (props: FlipCountdownInterface) => {
-  console.log('FilpCountdown props', props)
+const FlipCountdown = (props: FlipCountdownInterface) => {
+  console.log('FlipCountdown props', props)
   // 解构组件属性，设置默认值
   const {
     duration,
@@ -141,4 +141,4 @@ const FilpCountdown = (props: FlipCountdownInterface) => {
   )
 }
 
-export default FilpCountdown;
+export default FlipCountdown;

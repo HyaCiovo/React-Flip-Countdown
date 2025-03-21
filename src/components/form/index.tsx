@@ -6,6 +6,7 @@ export interface IFormInput {
   targetDate: string
   type:  "Day" | "Hour" | "Minute" | "Second"
 }
+
 const Form = ({ onSubmit }: any) => {
   const { register, handleSubmit } = useForm<IFormInput>()
 
@@ -48,8 +49,7 @@ const Form = ({ onSubmit }: any) => {
       </div>
       <button className="font-semibold bg-linear-to-r from-blue-500 to-purple-500 hover:from-blue-600 
             hover:to-purple-600 text-white py-2 px-4 rounded w-full md:max-w-1/2 my-4 mb-8 md:my-8 sm:my-2 md:rounded-[10px] cursor-pointer
-            shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:rotate-3
-            focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+            shadow-lg"
         type="submit">
         Rerender the countdown demo
       </button>

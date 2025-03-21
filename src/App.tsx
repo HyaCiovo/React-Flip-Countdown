@@ -1,10 +1,11 @@
-import FilpCountdown from './components/flip-countdown';
+import FlipCountdown from './components/flip-countdown';
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import Form, { IFormInput } from './components/form';
 import { SubmitHandler } from 'react-hook-form';
 import './App.less';
 import GithubIcon from './components/github-icon/icon';
+import dayjs from 'dayjs';
 
 interface IinputValue {
   duration?: number
@@ -12,17 +13,98 @@ interface IinputValue {
   type: "Day" | "Hour" | "Minute" | "Second"
 }
 
+const validateInput = (data: IFormInput) => {
+  const now = dayjs();
+
+  if (data.duration) {
+    const duration = Number(data.duration);
+    if (duration < 1000) {
+      toast.error('Duration must be at least 1000 milliseconds!');
+      return false
+    }
+
+    switch (data.type) {
+      case 'Day':
+        if (duration > 1000 * 60 * 60 * 24 * 99) {
+          toast.error('Duration must be no more than 99 days!');
+          return false
+        }
+        break;
+      case 'Hour':
+        if (duration > 1000 * 60 * 60 * 24) {
+          toast.error('Duration must be no more than 1 day!');
+          return false
+        }
+        break;
+      case 'Minute':
+        if (duration > 1000 * 60 * 60) {
+          toast.error('Duration must be no more than 1 hour!');
+          return false
+        }
+        break;
+      case 'Second':
+        if (duration > 1000 * 60) {
+          toast.error('Duration must be no more than 1 minute!');
+          return false
+        }
+        break;
+    }
+  }
+
+  if (data.targetDate) {
+    const targetDate = dayjs(data.targetDate);
+    if (isNaN(targetDate.valueOf())) {
+      toast.error('Please enter a valid target date!');
+      return false
+    }
+    if (targetDate.isBefore(now)) {
+      toast.error('Target date cannot be earlier than now!');
+      return false
+    }
+
+    switch (data.type) {
+      case 'Day':
+        if (targetDate.diff(now, 'day') >= 99) {
+          toast.error('No later than 99 days from now!');
+          return false
+        }
+        break;
+      case 'Hour':
+        if (targetDate.diff(now, 'day') >= 1) {
+          toast.error('No later than 1 day from now!');
+          return false
+        }
+        break;
+      case 'Minute':
+        if (targetDate.diff(now, 'hour') >= 1) {
+          toast.error('No later than 1 hour from now!');
+          return false
+        }
+        break;
+      case 'Second':
+        if (targetDate.diff(now, 'minute') >= 1) {
+          toast.error('No later than 1 minute from now!');
+          return false
+        }
+        break;
+    }
+  }
+
+  return true;
+};
+
 const App = () => {
   const [inputValue, setInputValue] = useState<IinputValue>();
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("success");
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    setLoading(true)
-    if (data.duration && (Number(data.duration) < 1000 || Number(data.duration) > 1000 * 60 * 60 * 24 * 99))
-      return toast.error('Please enter a valid duration!')
-    if (data.targetDate && isNaN(new Date(data.targetDate).getTime()))
-      return toast.error('Please enter a valid target date!')
+    setStatus("loading")
+    if (!validateInput(data)) {
+      setStatus("error")
+      return
+    }
+
     setInputValue({
-      duration: data.duration || undefined,
+      duration: data.duration ? Number(data.duration) : undefined,
       targetDate: data.targetDate ? new Date(data.targetDate) : undefined,
       type: data.type
     })
@@ -30,7 +112,7 @@ const App = () => {
 
   useEffect(() => {
     if (inputValue) {
-      setLoading(false)
+      setStatus("success")
     }
   }, [inputValue])
 
@@ -76,8 +158,10 @@ const App = () => {
             A simple and easy-to-use flipCountdown component for React 🥳.
           </div>
           <Form onSubmit={onSubmit} />
-          <div className="">
-            {loading ? <></> : <FilpCountdown
+          <div className="h-12 sm:h-15 md:h-20 lg:h-25">
+            {status === "loading" && <>loading...</>}
+            {status === "error" && <>Please check your input </>}
+            {status === "success" && <FlipCountdown
               duration={inputValue?.duration}
               targetDate={inputValue?.targetDate}
               type={inputValue?.type}
