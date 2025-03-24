@@ -87,8 +87,8 @@ export default App;
 ### 场景 1：目标时刻倒计时
 ```tsx
 <FlipCountdown
-  type="Second"
-  targetDate={new Date('2026-01-01T00:00:00')}
+  type="Day"
+  targetDate={new Date('2026-12-31T23:59:59')}
   onEnded={() => alert('新年快乐！')}
 />
 ```
@@ -102,11 +102,11 @@ export default App;
 />
 ```
 
-### 场景 3：仅显示天数
+### 场景 3：仅显示秒数
 ```tsx
 <FlipCountdown
-  type="Day"
-  targetDate={new Date('2026-12-31T23:59:59')}
+  type="Second"
+  targetDate={new Date('2025-03-24T00:00:00')}
 />
 ```
 
