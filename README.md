@@ -162,4 +162,4 @@ export default App;
 ---
 
 
-如有任何问题或建议，请随时联系作者或提交 issue。欢迎 star 和 issue。
+组件目前功能较少，内部逻辑实现也比较简陋。如有任何问题或建议，请随时联系作者或提交 issue。欢迎各位同行和代码爱好者 star、 issue和 pr。
