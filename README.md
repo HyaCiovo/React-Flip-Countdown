@@ -50,6 +50,22 @@ export default App;
 
 ---
 
+## 依赖库
+
+- React：用于构建组件；
+- Tailwind CSS：补充样式方案；
+- clsx：轻量级的高性能`classNames`替代方案；
+- dayjs：不必多言；
+- react-hot-toast：一个不错的 React 通知库，不装`antd`时我就用ta；
+- React Hook Form：React 高性能表单库。
+
+
+> 以上依赖库都是非必需的，不过作者强烈推荐。
+>
+> 可以在`FlipCard`、`FlipCountdown`文件中的`js`、`css`代码上自行修改以适配不同的前端框架。
+
+---
+
 ## 属性说明
 
 | 参数名       | 类型                                   | 默认值      | 描述                                                         |
