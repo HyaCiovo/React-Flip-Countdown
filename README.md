@@ -48,7 +48,7 @@ export default App;
 | 参数名       | 类型                                   | 默认值      | 描述                                                         |
 | ------------ | -------------------------------------- | ----------- | ------------------------------------------------------------ |
 | `duration`   | `number`                               | `undefined` | 倒计时的持续时间（以毫秒为单位）。如果未设置，则默认为 5 分钟。 |
-| `type`       | `'Day' | 'Hour' | 'Minute' | 'Second'` | `'Day'`     | 倒计时的显示类型。可选值包括：`Day`、`Hour`、`Minute`、`Second`。 |
+| `type`       | `'Day' \| 'Hour' \| 'Minute' \| 'Second'` | `'Day'`     | 倒计时的显示类型。可选值包括：`Day`、`Hour`、`Minute`、`Second`。 |
 | `targetDate` | `Date`                                 | `undefined` | 目标时刻。如果同时设置了 `duration` 和 `targetDate`，以 `targetDate` 为准。 |
 | `onEnded`    | `() => void`                           | `undefined` | 倒计时结束时的回调函数。                                     |
 
