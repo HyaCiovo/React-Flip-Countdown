@@ -101,9 +101,11 @@ const FlipCard = (
             )}
         >
             {/* 前牌 */}
-            <div className={clsx(style['digital'], style['front'], style[`number${frontText}`])} />
+            <div className={clsx(`number`,style['digital'], style['front'])}
+                data-number={`${frontText}`} />
             {/* 后牌 */}
-            <div className={clsx(style['digital'], style['back'], style[`number${backText}`])} />
+            <div className={clsx(`number`,style['digital'], style['back'])}
+                data-number={`${backText}`} />
         </div>
     )
 }

@@ -11,6 +11,13 @@
   margin: 0 3px;
 }
 
+:global(.number) {
+  &::after,
+  &::before {
+    content: attr(data-number) !important;
+  }
+}
+
 .flip-card .digital:before,
 .flip-card .digital:after {
   content: '';
@@ -126,54 +133,4 @@
   100% {
     transform: perspective(160px) rotateX(0deg);
   }
-}
-
-.flip-card .number0:before,
-.flip-card .number0:after {
-  content: '0';
-}
-
-.flip-card .number1:before,
-.flip-card .number1:after {
-  content: '1';
-}
-
-.flip-card .number2:before,
-.flip-card .number2:after {
-  content: '2';
-}
-
-.flip-card .number3:before,
-.flip-card .number3:after {
-  content: '3';
-}
-
-.flip-card .number4:before,
-.flip-card .number4:after {
-  content: '4';
-}
-
-.flip-card .number5:before,
-.flip-card .number5:after {
-  content: '5';
-}
-
-.flip-card .number6:before,
-.flip-card .number6:after {
-  content: '6';
-}
-
-.flip-card .number7:before,
-.flip-card .number7:after {
-  content: '7';
-}
-
-.flip-card .number8:before,
-.flip-card .number8:after {
-  content: '8';
-}
-
-.flip-card .number9:before,
-.flip-card .number9:after {
-  content: '9';
 }
